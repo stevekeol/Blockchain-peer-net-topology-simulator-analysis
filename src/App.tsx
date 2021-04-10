@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import './App.css';
-import G6 from './g6';
+import CanvasTest from './Components/CanvasTest';
+// import Tutorital from './Components/Tutorital';
 
-function App() {
+export default function App() {
   return(
-    <div id="container">
-      <G6></G6>
-    </div>
+    <CanvasTest />
+    // <Tutorital />
   )
 }
-
-export default App;
