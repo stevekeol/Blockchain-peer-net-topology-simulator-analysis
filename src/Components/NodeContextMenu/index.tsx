@@ -1,15 +1,14 @@
 import React from 'react'
-import { Menu, Icon } from 'antd'
-import 'antd/es/menu/style/css'
+import { Menu } from 'antd'
+// import 'antd/es/menu/style/css'
 const { SubMenu } = Menu
 
-const NodeContextMenu = ({ x = -300, y = 0 }) => {
+export default function({ x = -300, y = 0 }) {
   return <Menu style={{ width: 256, position: 'absolute', left: x, top: y }} mode="vertical">
     <SubMenu
       key="sub1"
       title={
         <span>
-          <Icon type="mail" />
           <span>Navigation One</span>
         </span>
       }
@@ -27,7 +26,6 @@ const NodeContextMenu = ({ x = -300, y = 0 }) => {
       key="sub2"
       title={
         <span>
-          <Icon type="appstore" />
           <span>Navigation Two</span>
         </span>
       }
@@ -43,7 +41,6 @@ const NodeContextMenu = ({ x = -300, y = 0 }) => {
       key="sub4"
       title={
         <span>
-          <Icon type="setting" />
           <span>Navigation Three</span>
         </span>
       }
@@ -56,4 +53,4 @@ const NodeContextMenu = ({ x = -300, y = 0 }) => {
   </Menu>
 }
 
-export default NodeContextMenu
+// export default NodeContextMenu

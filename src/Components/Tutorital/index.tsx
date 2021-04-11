@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { data } from '../../Datas/Tutorital';
 import G6 from '@antv/g6';
-import { NodeTooltips } from '../NodeTooltips'
-import { EdgeToolTips  } from '../EdgeToolTips'
-import { NodeContextMenu } from '../NodeContextMenu'
+import NodeTooltips from '../NodeToolTips'
+import EdgeToolTips from '../EdgeToolTips'
+import NodeContextMenu from '../NodeContextMenu'
 import '../registerShape';
 
 export default function() {
@@ -25,12 +25,18 @@ export default function() {
   const [nodeContextMenuX, setNodeContextMenuX] = useState(0)
   const [nodeContextMenuY, setNodeContextMenuY] = useState(0)
   const bindEvents = () => {
+    // debugger
+    console.log('enter')
     // 监听edge上面mouse事件
     graph.on('edge:mouseenter', evt => {
+      console.log("enter edge")
+      console.log(evt)
       const { item, target } = evt
-      debugger
+      console.log(item, target)
+      // debugger
       const type = target.get('type')
-      if(type !== 'text') {
+      console.log(type)
+      if(type !== 'path') {
         return
       }
       const model = item.getModel()
@@ -38,7 +44,9 @@ export default function() {
       // y=endPoint.y - height / 2，在同一水平线上，x值=endPoint.x - width - 10
       const y = endPoint.y - 35
       const x = endPoint.x - 150 - 10
+      console.log(x, y)
       const point = graph.getCanvasByPoint(x, y)
+      console.log(point)
       setEdgeTooltipX(point.x)
       setEdgeTooltipY(point.y)
       setShowEdgeTooltip(true)
@@ -50,6 +58,7 @@ export default function() {
 
     // 监听node上面mouse事件
     graph.on('node:mouseenter', evt => {
+      console.log("enter node")
       const { item } = evt
       const model = item.getModel()
       const { x, y } = model
@@ -149,8 +158,8 @@ export default function() {
 
   return (
     <div ref={ref}>
-      { showEdgeTooltip && <EdgeToolTips x={edgeTooltipX} y={edgeTooltipY} /> }
       { showNodeTooltip && <NodeTooltips x={nodeTooltipX} y={nodeTooltipY} /> }
+      { showEdgeTooltip && <EdgeToolTips x={edgeTooltipX} y={edgeTooltipY} /> }
       { showNodeContextMenu && <NodeContextMenu x={nodeContextMenuX} y={nodeContextMenuY} /> }
     </div>
   );

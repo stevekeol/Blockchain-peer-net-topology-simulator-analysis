@@ -1,7 +1,8 @@
 import React from 'react'
 import styles from './index.css'
 
-const EdgeToolTips = ({ x, y }) => {
+export default function ({ x, y }){
+  console.log('enter edgeTooltips')
   return (
     <div className={styles.edgeTooltips} style={{ top: `${y}px`, left: `${x}px`}}>
       <div className={styles.edgeTitle}>
@@ -20,11 +21,9 @@ const EdgeToolTips = ({ x, y }) => {
         </div>
         <div className={styles.detailContent}>
           <p className={styles.edgeCode}>交易编码：</p>
-          <span className={styles.edgeValue}>1000190203455</span>
+          <span className={styles.edgeValue}>100019 0203455</span>
         </div>
       </div>
     </div>
   )
 }
-
-export default EdgeToolTips

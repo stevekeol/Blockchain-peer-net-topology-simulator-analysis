@@ -1,8 +1,12 @@
 import React from 'react'
 import { Timeline } from 'antd'
-import 'antd/es/timeline/style/css'
+// import 'antd/es/timeline/style/css'
+
 import styles from './index.css'
-const NodeToolTips = ({ x, y }) => {
+
+export default function({ x, y }) {
+  console.log('=========')
+  console.log(x,y)
   return (
     <div className={styles.nodeTooltips} style={{ top: `${y}px`, left: `${x}px`}}>
       <Timeline>
@@ -14,5 +18,3 @@ const NodeToolTips = ({ x, y }) => {
     </div>
   )
 }
-
-export default NodeToolTips
