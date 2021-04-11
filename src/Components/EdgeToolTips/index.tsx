@@ -1,10 +1,14 @@
 import React from 'react'
 import styles from './index.css'
 
-export default function ({ x, y }){
-  console.log('enter edgeTooltips')
+export default function ({ x=100, y=100 }){
+  console.log('enter edgeTooltips-=-=-')
+  console.log(x,y)
+  // return (
+  //   <div className="zhangjieTest">zhangjie</div>
+  // )
   return (
-    <div className={styles.edgeTooltips} style={{ top: `${y}px`, left: `${x}px`}}>
+    <div className={styles.edgeTooltips} style={{ top: `${0}px`, left: `${0}px`}}>
       <div className={styles.edgeTitle}>
         <p className={styles.tooltipsCommon}>凭证开立</p>
         <p className={`${styles.tooltipsCommon} ${styles.tooltipsMoney}`}>1000,000,000元</p>

@@ -1,7 +1,15 @@
+.zhangjieTest {
+  width: 100px;
+  height: 100px;
+  top: 100px;
+  left: 100px;
+  position: absolute;
+}
+
 .edgeTooltips {
-/*  position: absolute;
-  left: -300px;
-  top: -100px;*/
+  position: absolute;
+  left: 0px;
+  top: 0px;
 }
 .edgeTitle {
   position: relative;

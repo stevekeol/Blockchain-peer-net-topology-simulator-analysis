@@ -53,7 +53,7 @@ export default function() {
     })
 
     graph.on('edge:mouseleave', () => {
-      setShowEdgeTooltip(false)
+      // setShowEdgeTooltip(false)
     })
 
     // 监听node上面mouse事件
@@ -89,7 +89,6 @@ export default function() {
 
   useEffect(() => {
     if(!graph) {
-      const miniMap = new G6.Minimap()
       graph = new G6.Graph({
         container: ref.current,
         width: 1200,
@@ -134,12 +133,11 @@ export default function() {
           nodesep: 30,
           ranksep: 100
         },
-        plugins: [miniMap]
+        // plugins: [miniMap]
       })
     }
     
     graph.data(data)
-  
     graph.render()
 
     const edges = graph.getEdges()
@@ -158,6 +156,8 @@ export default function() {
 
   return (
     <div ref={ref}>
+      <EdgeToolTips x={edgeTooltipX} y={edgeTooltipY} />
+      <div>caonima</div>
       { showNodeTooltip && <NodeTooltips x={nodeTooltipX} y={nodeTooltipY} /> }
       { showEdgeTooltip && <EdgeToolTips x={edgeTooltipX} y={edgeTooltipY} /> }
       { showNodeContextMenu && <NodeContextMenu x={nodeContextMenuX} y={nodeContextMenuY} /> }
