@@ -4,11 +4,11 @@ import G6 from '@antv/g6';
 import NodeTooltips from '../NodeToolTips'
 import EdgeToolTips from '../EdgeToolTips'
 import NodeContextMenu from '../NodeContextMenu'
-import '../registerShape';
+import '../Libs/registerShape';
 
 export default function() {
   const ref = React.useRef(null)
-  let graph = null
+  let graph: any = null
 
   // 边tooltip坐标
   const [showEdgeTooltip, setShowEdgeTooltip] = useState(false)
@@ -127,12 +127,17 @@ export default function() {
             lineWidth: 3
           }
         },
+        // layout: {
+        //   type: 'dagre',
+        //   rankdir: 'LR',
+        //   nodesep: 30,
+        //   ranksep: 100
+        // },
         layout: {
-          type: 'dagre',
-          rankdir: 'LR',
-          nodesep: 30,
-          ranksep: 100
-        },
+          type: 'fruchterman',
+          gravity: 5,
+          speed: 5,
+        },        
         // plugins: [miniMap]
       })
     }

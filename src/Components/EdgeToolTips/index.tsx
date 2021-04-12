@@ -10,22 +10,22 @@ export default function ({ x=100, y=100 }){
   return (
     <div className={styles.edgeTooltips} style={{ top: `${0}px`, left: `${0}px`}}>
       <div className={styles.edgeTitle}>
-        <p className={styles.tooltipsCommon}>凭证开立</p>
-        <p className={`${styles.tooltipsCommon} ${styles.tooltipsMoney}`}>1000,000,000元</p>
-        <p className={`${styles.tooltipsCommon} ${styles.tooltipsDate}`}>2019-09-10</p>
+        <p className={styles.tooltipsCommon}>当前节点状态</p>
+        <p className={`${styles.tooltipsCommon} ${styles.tooltipsMoney}`}>xxx1</p>
+        <p className={`${styles.tooltipsCommon} ${styles.tooltipsDate}`}>xxx2</p>
       </div>
       <div className={styles.edgeDetail}>
         <div className={styles.detailContent}>
-          <p className={styles.edgeCode}>交易编码：</p>
-          <span className={styles.edgeValue}>1000190203455</span>
+          <p className={styles.edgeCode}>高度：</p>
+          <span className={styles.edgeValue}>12345</span>
         </div>
         <div className={styles.detailContent}>
-          <p className={styles.edgeCode}>交易编码：</p>
-          <span className={styles.edgeValue}>1000190203455</span>
+          <p className={styles.edgeCode}>连接数：</p>
+          <span className={styles.edgeValue}>5 / 10</span>
         </div>
         <div className={styles.detailContent}>
-          <p className={styles.edgeCode}>交易编码：</p>
-          <span className={styles.edgeValue}>100019 0203455</span>
+          <p className={styles.edgeCode}>其它：</p>
+          <span className={styles.edgeValue}>...</span>
         </div>
       </div>
     </div>

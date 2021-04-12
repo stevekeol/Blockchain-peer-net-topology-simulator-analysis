@@ -2,39 +2,39 @@ export const data = {
   nodes: [
     {
       id: '1',
-      label: '公司1'
+      label: '节点1'
     },
     {
       id: '2',
-      label: '公司2'
+      label: '节点2'
     },
     {
       id: '3',
-      label: '公司3'
+      label: '节点3'
     },
     {
       id: '4',
-      label: '公司4'
+      label: '节点4'
     },
     {
       id: '5',
-      label: '公司5'
+      label: '节点5'
     },
     {
       id: '6',
-      label: '公司6'
+      label: '节点6'
     },
     {
       id: '7',
-      label: '公司7'
+      label: '节点7'
     },
     {
       id: '8',
-      label: '公司8'
+      label: '节点8'
     },
     {
       id: '9',
-      label: '公司9'
+      label: '节点9'
     }
   ],
   edges: [
