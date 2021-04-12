@@ -6,6 +6,12 @@ import DATA from '../Datas/CanvasTest';
  * @param {number}   timeout 每隔多少秒产生一个新节点
  * @param {object[]} =       DATA}        data [description]
  */
+
+interface Node {
+  id: number;
+  
+}
+
 export default function(timeout: number) {
   let _DATA = DATA;
   console.log(_DATA.length);

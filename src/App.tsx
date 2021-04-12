@@ -6,6 +6,9 @@ import CanvasTest from './Components/CanvasTest';
     // <Tutorital />
 export default function() {
   return(
-    <CanvasTest />
+    <div className="App-header min-h-screen flex flex-col items-center justify-center text-white">
+      <div className="title">节点网络拓扑图 - Simulator / Analyzer</div>
+      <CanvasTest />
+    </div>
   )
 }
