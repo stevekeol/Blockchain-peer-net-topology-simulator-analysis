@@ -70,6 +70,7 @@ G6.registerEdge(
           type: 'fruchterman',
           gravity: 5,
           speed: 5,
+          workerEnabled: true, //使用worker线程分担渲染线程的压力
         },
         animate: true,
         defaultNode: {
