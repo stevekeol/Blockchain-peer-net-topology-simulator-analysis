@@ -1,25 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import G6 from '@antv/g6';
+import './index.css';
 import DATA from '../../Datas/CanvasTest';
 import nodeScaleAnimetion from '../../Libs/nodeScaleAnimetion';
-// import generateNode from '../../Libs/generateNode'
 import edgeDottedAnimetion from '../../Libs/edgeDottedAnimetion';
+import nodeToolTips from '../../Libs/nodeToolTips';
+import edgeToolTips from '../../Libs/edgeToolTips';
+// import generateNode from '../../Libs/generateNode'
+
 export default function() {
   const ref = React.useRef(null);
   let graph = null;
 
   // 为活跃节点配置缩放动效
-  nodeScaleAnimetion();
+  nodeScaleAnimetion(); // 也可以插件形式，写入plugins
   // 为选中节点相邻边增加显示动效
   // edgeDottedAnimetion();
 
-  useEffect(() => {
-    if(!graph) {
-
 const lineDash = [4, 2, 1, 2];
-
 G6.registerEdge(
   'can-running',
   {
@@ -56,6 +55,9 @@ G6.registerEdge(
   'cubic-horizontal',
 );
 
+  useEffect(() => {
+    if(!graph) {
+
 
       graph = new G6.Graph({
         container: ReactDOM.findDOMNode(ref.current) || '',
@@ -64,7 +66,6 @@ G6.registerEdge(
         modes: {
           default: ['drag-node', 'click-select'],
         },
-        background: {},
         layout: {
           type: 'fruchterman',
           gravity: 5,
@@ -78,6 +79,7 @@ G6.registerEdge(
             stroke: '#eee',  
           }          
         },
+        plugins: [nodeToolTips, edgeToolTips],
       });
 
   // 监听节点的 mouseenter 事件
@@ -88,7 +90,7 @@ G6.registerEdge(
     // 获得目标节点的所有相关边
     const edges = node.getEdges();
     // 将所有相关边的 running 状态置为 true，此时将会触发自定义节点的 setState 函数
-    edges.forEach((edge) => graph.setItemState(edge, 'hover', true));
+    edges.forEach((edge) => graph.setItemState(edge, 'running', true));
     console.log(edges);
   });
 
@@ -99,7 +101,7 @@ G6.registerEdge(
     // 获得目标节点的所有相关边
     const edges = node.getEdges();
     // 将所有相关边的 running 状态置为 false，此时将会触发自定义节点的 setState 函数
-    edges.forEach((edge) => graph.setItemState(edge, 'hover', false));
+    edges.forEach((edge) => graph.setItemState(edge, 'running', false));
   });      
 
       graph.data(DATA);
