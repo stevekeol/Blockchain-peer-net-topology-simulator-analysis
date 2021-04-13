@@ -1,8 +1,23 @@
-.App-header {
+.app {
   @apply bg-gradient-to-b from-blue-700 via-blue-500;
-  font-size: calc(10px + 2vmin);
+  /*font-size: calc(10px + 2vmin);*/
+  color: white;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 62fr 38fr;
 }
-
-.title {
-  margin-bottom: -100px;
+.canvas {
+  border-right: dotted rgba(255, 255, 255, 0.3);
+  border-width: 0.1px;
+  padding-left: 5px;
+}
+.data {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+.info {
+  border-bottom: dotted rgba(255, 255, 255, 0.3);
+  border-width: 0.1px;
+}
+.operation {
 }

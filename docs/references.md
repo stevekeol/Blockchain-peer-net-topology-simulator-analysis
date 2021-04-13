@@ -1,3 +1,7 @@
++ [使用React组件来定制化节点node](https://github.com/antvis/G6/tree/master/packages/react-node)
+
+---
+
 + [力导向图布局-定制不同节点的参数
 ](https://g6.antv.vision/zh/examples/net/forceDirected#forceDirectedFunctionalParams)
 

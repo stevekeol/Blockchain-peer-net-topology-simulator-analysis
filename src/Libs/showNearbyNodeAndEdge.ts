@@ -1,9 +1,9 @@
-export default function(_graph) {
-  const graph = _graph;
-
+export default function(graph) {
   function clearAllStats() {
     graph.setAutoPaint(false);
     graph.getNodes().forEach(function (node) {
+      //找出选中状态的节点，保护起来
+      // const selected = graph.findAllByState(type, this.selectedState);
       graph.clearItemStates(node);
     });
     graph.getEdges().forEach(function (edge) {
@@ -14,9 +14,16 @@ export default function(_graph) {
   }
 
   graph.on('node:mouseenter', function (e) {
-    const item = e.item;
+    const self = this;
+    const { item } = e;
+    const type = item.getType();
+    const selected = graph.findAllByState(type, self.selectedState);
+
     graph.setAutoPaint(false);
     graph.getNodes().forEach(function (node) {
+      // if(node) {
+      //   console.log(node);
+      // }
       graph.clearItemStates(node);
       graph.setItemState(node, 'dark', true);
     });

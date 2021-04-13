@@ -4,7 +4,8 @@
   "license": "MIT",
   "main": "main/index.js",
   "author": {
-    "name": "stevekeol"
+    "name": "stevekeol",
+    "email": "stevekeol.x@gmail.com"
   },
   "description": "Peer net topology graph simulator & analysis",
   "keywords": [
