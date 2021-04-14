@@ -6,20 +6,21 @@ import { ArrowDownOutlined, ArrowUpOutlined } from '@ant-design/icons';
 import useTextFileReader from '../../Hooks/useTextFileReader';
 
 export default function() {
-  const { fileContent, isReading, error, trigger } = useTextFileReader();
+  let { fileContent, isReading, error, trigger } = useTextFileReader();
   return(
     <>
       <Button 
         shape="round"
         icon={<ArrowDownOutlined />}
         onClick={() => {
-          trigger();
+          // trigger();
+          // useTextFileReader()
           console.log(fileContent);
+          
         }}
       >
       ImportData
       </Button>
-      {isReading ? <div>Y</div> : <div>N</div>}
       <Button
         shape="round"
         icon={<ArrowUpOutlined />}
