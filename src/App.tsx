@@ -82,10 +82,10 @@ export default function() {
       <div className="canvas" ref={ref}>网络节点拓扑
       </div>
       <div className="data">
-        <div className="info">节点实时状态详情
+        <div className="info">
           <PeerInfo />
         </div>
-        <div className="operation">操作面板
+        <div className="operation">
           <Operation />
         </div>
       </div>

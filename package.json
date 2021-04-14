@@ -35,6 +35,7 @@
     "type-check": "tsc"
   },
   "dependencies": {
+    "@ant-design/icons": "^4.6.2",
     "@antv/g6": "^4.2.5",
     "antd": "^4.15.1",
     "electron-is-dev": "^1.2.0",
