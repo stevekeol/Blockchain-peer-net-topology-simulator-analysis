@@ -21,15 +21,15 @@ const useTextFileReader = (): Result => {
   const fileInputRef = useRef(createFileInput());
 
   const handleFileReader = async (e: any) => {
-    console.log(e)
     setIsReading(true);
     try {
       const file = e.target.files[0];
       const reader = new FileReader();
+      reader.readAsText(file);
       reader.onload = function (e) {
+        console.log(e.target!.result)
         setFileContent(e.target!.result as string);
       };
-      reader.readAsText(file);
     } catch (error) {
       setError(error);
     } finally {

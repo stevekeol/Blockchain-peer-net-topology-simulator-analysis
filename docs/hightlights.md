@@ -17,4 +17,44 @@
 
 + 可以学习react-use库中各种react hooks的使用和实现思路;
 
-+ 
++ 使用EventEmitter，每个task来了，触发对应的Event即可;
+
+# 数据
+1. 读图的数据
+```js
+graph.save();
+```
+2. 接收数据并进行渲染
+```js
+graph.read(data) // data + render
+```
+3. 更新数据源,并重新渲染(在原有布局基础上，动态增加)
+```js
+graph.changeData(data, stack)
+```
+
+# 节点和边的动态变化
+1. 新增节点: graph.addItem(type, model, stack)
+```js
+const newEdge = {
+  source: '2',
+  target: '3'
+}
+
+graph.addItem('edge', newEdge);
+```
+2. 删除节点: graph.removeItem(item, stack)
+
+
+# 查找元素
+1. 查找符合规则的单个元素: graph.find(type, fn)
+  ```js
+  const findNode = graph.find('node', (node) => {
+    return node.get('model').x === 100;
+  });
+  ```
+# 图计算
+1. 查找节点连接数(入度，出度等): graph.getNodeDegree(node, degreeType, refresh)
+```js
+graph.getNodeDegree('node1', 'in/out/total');
+```

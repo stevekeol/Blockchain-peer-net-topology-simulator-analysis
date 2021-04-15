@@ -1,23 +1,22 @@
 import React, { useState } from 'react';
 import { Button, Radio } from 'antd';
 import { ArrowDownOutlined, ArrowUpOutlined } from '@ant-design/icons';
+import { useAsyncFn } from 'react-use';
 
-import { useTextFileReader } from '../../Hooks';
+import { fileReader } from '../../Hooks';
 import './index.css';
 
 export default function() {
-  let { fileContent, isReading, error, trigger } = useTextFileReader();
   return(
     <>
       <Button
         shape="round"
         icon={<ArrowDownOutlined />}
-        onClick={async () => {
-          await trigger();
-          // useTextFileReader()
-          console.log(fileContent);
-        }}
-        // onClick={() => trigger()}
+        /**
+         * @TODO
+         * 此处是成功读取文件后异地设置全局拓扑图的数据来源,待重写
+         */
+        onClick={() => fileReader()}
       >
       ImportData
       </Button>
