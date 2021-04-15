@@ -1,11 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import G6 from '@antv/g6';
+
 import { PeerInfo, Operation } from './Components';
 import { nodeScaleAnimetion, showNearbyNodeAndEdge } from './Libs';
+
 import { data, dataMini, dataMedim } from './Datas';
-// import { createGlobalState } from 'react-use';
 import G6_CONFIG from './Configs';
+
+// import socketIOClient from "socket.io-client";
+// const ENDPOINT = "http://127.0.0.1:4001";
+
 import './App.css';
 
 export default function() {
