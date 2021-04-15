@@ -8,9 +8,9 @@ export type Result = {
 };
 
 const createFileInput = () => {
-  const $fileInput = document.createElement("input");
-  $fileInput.type = "file";
-  return $fileInput;
+  const fileInput = document.createElement("input");
+  fileInput.type = "file";
+  return fileInput;
 };
 
 const useTextFileReader = (): Result => {
@@ -20,7 +20,8 @@ const useTextFileReader = (): Result => {
 
   const fileInputRef = useRef(createFileInput());
 
-  const handleFileReader = async (e) => {
+  const handleFileReader = async (e: any) => {
+    console.log(e)
     setIsReading(true);
     try {
       const file = e.target.files[0];

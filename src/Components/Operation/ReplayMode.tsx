@@ -12,12 +12,13 @@ export default function() {
       <Button 
         shape="round"
         icon={<ArrowDownOutlined />}
-        onClick={() => {
-          // trigger();
+        onClick={async () => {
+          await trigger();
           // useTextFileReader()
           console.log(fileContent);
-          
+
         }}
+        // onClick={() => trigger()}
       >
       ImportData
       </Button>
