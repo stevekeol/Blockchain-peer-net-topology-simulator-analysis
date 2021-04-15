@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import G6 from '@antv/g6';
-import { createGlobalState } from 'react-use';
 import { PeerInfo, Operation } from './Components';
-import { nodeScaleAnimetion, showNearbyNodeAndEdge, edgeToolTips, nodeToolTips } from './Libs';
+import { nodeScaleAnimetion, showNearbyNodeAndEdge } from './Libs';
 import { data, dataMini, dataMedim } from './Datas';
+// import { createGlobalState } from 'react-use';
+import G6_CONFIG from './Configs';
 import './App.css';
 
 export default function() {
@@ -14,64 +15,20 @@ export default function() {
   nodeScaleAnimetion(); // 为活跃节点配置缩放动效（也可以插件形式，写入plugins）
   // edgeDottedAnimetion(); // 为选中节点相邻边增加显示动效
 
-  // graph && graph.changeData(data)
-
   /**
    * @TODO
    * useEffect会在每次页面渲染之后，都执行: 构建g6容器,读取解析节点数据并渲染等;
    */
   useEffect(() => {
     if(!graph) {
-      /**
-       * @TODO
-       * 以文件配置形式隔离此处代码
-       */
-      graph = new G6.Graph({
-        container: ReactDOM.findDOMNode(ref.current) as HTMLElement,
-        width: 1200,
-        height: 1000,
-        modes: {
-          // default: ['drag-canvas', 'drag-node', 'click-select', 'zoom-canvas'],
-          default: ['drag-node', 'click-select'],
-          // default: ['drag-node'],
+      graph = new G6.Graph(
+        Object.assign({
+          container: ReactDOM.findDOMNode(ref.current) as HTMLElement
         },
-        layout: {
-          type: 'fruchterman',
-          gravity: 4,
-          speed: 5,
-          workerEnabled: true, //使用worker线程分担渲染线程的压力
-        },
-        animate: true,
-        defaultNode: {
-          size: 60,
-          style: {
-            fill: '#3DE2DC',
-            stroke: '#eee',  
-          }          
-        },
-        defaultEdge: {
-          style: {
-            lineAppendWidth: 5,
-            strokeOpacity: 0.5
-          }
-        },
-        nodeStateStyles: {
-          highlight: {
-            opacity: 1,
-          },
-          dark: {
-            opacity: 0.2,
-          },
-        },
-        edgeStateStyles: {
-          highlight: {
-            stroke: '#999',
-          },
-        },        
-        plugins: [nodeToolTips, edgeToolTips], // 自定义的功能插件
-      });
+        G6_CONFIG)
+      );
 
-      // 新增节点
+      // 新增节点-demo
       setTimeout(() => {
         const newNode = {
           id: '5',
@@ -82,7 +39,7 @@ export default function() {
         graph.addItem('node', newNode);
       }, 3000)
 
-      // 新增连接
+      // 新增连接-demo
       setTimeout(() => {
         const newEdge = {
           source: '2',
@@ -92,7 +49,7 @@ export default function() {
       }, 5000)
 
 
-      //删除节点
+      //删除节点-demo
       setTimeout(() => {
         const newNode = {
           id: '5',
@@ -105,7 +62,7 @@ export default function() {
       }, 7000)
 
 
-      //节点样式更改(取决于节点负载)
+      //节点样式更改(取决于节点负载)-demo
       setTimeout(() => {
         const model = {
           id: '0',
