@@ -1,11 +1,4 @@
-import nodeScaleAnimetion from './nodeScaleAnimetion';
-import showNearbyNodeAndEdge from './showNearbyNodeAndEdge';
-import edgeToolTips from './edgeToolTips';
-import nodeToolTips from './nodeToolTips';
-
-export {
-  nodeScaleAnimetion, 
-  showNearbyNodeAndEdge,
-  edgeToolTips,
-  nodeToolTips
-}
+export { default as nodeScaleAnimetion } from './nodeScaleAnimetion';
+export { default as showNearbyNodeAndEdge } from './showNearbyNodeAndEdge';
+export { default as edgeToolTips } from './edgeToolTips';
+export { default as nodeToolTips } from './nodeToolTips';

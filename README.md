@@ -1,7 +1,8 @@
 # Blockchain-peer-net-topology-simulator-analysis
 
-模拟分析区块链节点网络的负载，信息流等
+可视化分析区块链节点网络的负载，信息流等运行状态
 
+## SkillStacks
 This Starter utilizes [Vite](https://github.com/vitejs/vite), [Tailwind](https://tailwindcss.com/), [React](https://reactjs.org/), [Typescript](https://www.typescriptlang.org/) and [Electron](https://electronjs.org/).
 
 ## Author

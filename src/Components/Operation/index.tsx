@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Button, Tooltip } from 'antd';
 import { SwapOutlined } from '@ant-design/icons';
+import 'antd/dist/antd.css';
 
 import RealTimeMode from './RealTimeMode';
 import ReplayMode from './ReplayMode';
 import './index.css';
-import 'antd/dist/antd.css';
 
 export default function() {
   const [isRealTimeMode, toggleMode] = useState(false);

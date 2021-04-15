@@ -1,22 +1,21 @@
 import React, { useState } from 'react';
-import './index.css';
-
 import { Button, Radio } from 'antd';
 import { ArrowDownOutlined, ArrowUpOutlined } from '@ant-design/icons';
-import useTextFileReader from '../../Hooks/useTextFileReader';
+
+import { useTextFileReader } from '../../Hooks';
+import './index.css';
 
 export default function() {
   let { fileContent, isReading, error, trigger } = useTextFileReader();
   return(
     <>
-      <Button 
+      <Button
         shape="round"
         icon={<ArrowDownOutlined />}
         onClick={async () => {
           await trigger();
           // useTextFileReader()
           console.log(fileContent);
-
         }}
         // onClick={() => trigger()}
       >

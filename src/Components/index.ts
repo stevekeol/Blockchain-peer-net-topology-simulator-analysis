@@ -1,4 +1,2 @@
-import PeerInfo from './PeerInfo';
-import Operation from './Operation';
-
-export { PeerInfo, Operation };
+export { default as PeerInfo } from './PeerInfo';
+export { default as Operation } from './Operation';
