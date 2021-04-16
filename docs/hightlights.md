@@ -38,7 +38,7 @@ graph.changeData(data, stack)
 ```js
 const newEdge = {
   source: '2',
-  target: '3'
+  target: '5'
 }
 
 graph.addItem('edge', newEdge);
