@@ -74,7 +74,7 @@ export default function() {
         };
 
         const item = graph.findById('0');
-        graph.updateItem(item, model);        
+        graph.updateItem(item, model);     
       }, 9000)
 
       // setTimeout(() => {
