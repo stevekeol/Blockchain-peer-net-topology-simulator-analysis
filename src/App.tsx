@@ -69,7 +69,7 @@ export default function() {
           id: '0',
           label: 'node-0',
           style: {
-            fill: 'red',
+            fill: 'orange',
           },
         };
 

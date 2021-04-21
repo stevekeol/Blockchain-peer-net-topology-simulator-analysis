@@ -8,12 +8,13 @@ import ReplayMode from './ReplayMode';
 import './index.css';
 
 export default function() {
-  const [isRealTimeMode, toggleMode] = useState(false);
+  const [isRealTimeMode, toggleMode] = useState(true);
   return(
     <>
       <Tooltip title={isRealTimeMode ? "实时模式": "回放模式"}>
         <Button type="primary" shape="circle" icon={<SwapOutlined />} onClick={() => toggleMode(!isRealTimeMode)} />
       </Tooltip>
+      <div id="container1"></div>
       {isRealTimeMode && <RealTimeMode />}
       {!isRealTimeMode && <ReplayMode />}
     </>

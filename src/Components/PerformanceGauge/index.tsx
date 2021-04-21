@@ -3,13 +3,15 @@ import ReactDOM from 'react-dom';
 import { Button, Tooltip } from 'antd';
 import { SwapOutlined } from '@ant-design/icons';
 import 'antd/dist/antd.css';
-import { Area, Line } from '@antv/g2plot';
-import { normalDistributionData } from '../../Datas';
+import { Gauge } from '@antv/g2plot';
 
 export default function() {
   const ref = React.useRef(null);
   // const container = ReactDOM.findDOMNode(ref.current);
-  let area = null;
+  let gauge = null;
+
+const ticks = [0, 1 / 3, 2 / 3, 1];
+const color = ['#F4664A', '#FAAD14', '#30BF78'];  
 
 const data = 
 [
@@ -66,46 +68,55 @@ const data =
 ]
 
   useEffect(() => {
-    if(!area) {
-      const line = new Line('container', {
-        data,
-        padding: 'auto',
-        autoFit: true,
-        xField: 'connectionRate',
-        yField: 'connectionCount',
-        yAxis: {
-          grid: {
-            line: {
-              style: {
-                stroke: 'white',
-                lineWidth: 0.5,
-                lineDash: [4, 5],
-                strokeOpacity: 1,
-              }
-            }
-          }          
-        },        
-        xAxis: {
-          title: {
-            text: '连接占比分布图',
+    if(!gauge) {
+      const gauge = new Gauge('container', {
+        percent: 0,
+        range: {
+          ticks: [0, 1],
+          color: ['l(0) 0:#F4664A 0.5:#FAAD14 1:#30BF78'],
+        },
+        indicator: {
+          pointer: {
             style: {
-              fill: 'white',
+              stroke: '#D0D0D0',
+            },
+          },
+          pin: {
+            style: {
+              stroke: '#D0D0D0',
             },
           },
         },
-        tooltip: {
-          fields: ['connectionCount', 'nodes'],
+        statistic: {
+          title: {
+            formatter: ({ percent }) => {
+              if (percent < ticks[1]) {
+                return 'bad';
+              }
+              if (percent < ticks[2]) {
+                return 'not good';
+              }
+              return 'good';
+            },
+            style: ({ percent }) => {
+              return {
+                fontSize: '36px',
+                lineHeight: 1,
+                color: percent < ticks[1] ? color[0] : percent < ticks[2] ? color[1] : color[2],
+              };
+            },
+          },
+          content: {
+            offsetY: 36,
+            style: {
+              fontSize: '24px',
+              color: '#4B535E',
+            },
+            // formatter: () => '系统表现',
+          },
         },
-        lineStyle: {
-          stroke: 'yellow',
-          fillOpacity: 0.5,
-          lineWidth: 1,
-          strokeOpacity: 1.0,
-          shadowColor: 'black',
-        },
-        smooth: true,
       });
-      line.render();
+      gauge.render();
     }
   })
 
@@ -118,3 +129,14 @@ const data =
     </>
   )
 }
+
+
+
+// let data = 0.7;
+// const interval = setInterval(() => {
+//   if (data >= 1.5) {
+//     clearInterval(interval);
+//   }
+//   data += 0.005;
+//   gauge.changeData(data > 1 ? data - 1 : data);
+// }, 100);
