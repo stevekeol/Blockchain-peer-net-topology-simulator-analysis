@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
 import './index.css';
 
+import NormalDistribution from '../NormalDistribution';
+
 export default function() {
   return(
     <>
-      节点实时详情组件          
+      <div id="container">
+      {
+        <NormalDistribution />
+      }
+      </div>
     </>
   )
 }

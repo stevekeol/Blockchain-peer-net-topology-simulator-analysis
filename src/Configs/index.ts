@@ -3,6 +3,7 @@ import { edgeToolTips, nodeToolTips } from '../Libs';
 const g6_config =  {
   width: 1200,
   height: 1000,
+  fitView: true,
   modes: {
     // default: ['drag-canvas', 'drag-node', 'click-select', 'zoom-canvas'],
     default: ['drag-node', 'click-select'],

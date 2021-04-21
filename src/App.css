@@ -13,7 +13,7 @@
 }
 .data {
   display: grid;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 4fr 1fr;
 }
 .info {
   border-bottom: dotted rgba(255, 255, 255, 0.3);

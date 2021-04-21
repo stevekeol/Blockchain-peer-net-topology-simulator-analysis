@@ -95,8 +95,7 @@ export default function() {
 
   return(
     <div className="app">
-      <div className="canvas" ref={ref}>网络节点拓扑
-      </div>
+      <div className="canvas" ref={ref}>网络节点拓扑</div>
       <div className="data">
         <div className="info">
           <PeerInfo />
