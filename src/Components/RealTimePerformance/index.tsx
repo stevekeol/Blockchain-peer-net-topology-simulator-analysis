@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Line } from '@antv/g2plot';
 
 export default function() {
-  let line = null;
+  let line: any = null;
 
   function getData() {
     // generate an array of random data
