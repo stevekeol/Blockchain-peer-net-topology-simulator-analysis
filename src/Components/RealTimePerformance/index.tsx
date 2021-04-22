@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Line } from '@antv/g2plot';
 import { realTimeLineConfig } from '../../Configs';
 

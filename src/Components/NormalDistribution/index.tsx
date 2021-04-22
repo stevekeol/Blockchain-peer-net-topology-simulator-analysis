@@ -1,9 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom';
-import { Button, Tooltip } from 'antd';
-import { SwapOutlined } from '@ant-design/icons';
-import 'antd/dist/antd.css';
-import { Area, Line } from '@antv/g2plot';
+import React, { useEffect } from 'react';
+import { Line } from '@antv/g2plot';
 import { normalDistributionLineConfig } from '../../Configs';
 
 export default function() {
