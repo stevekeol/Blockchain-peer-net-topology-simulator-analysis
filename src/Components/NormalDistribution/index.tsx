@@ -90,6 +90,7 @@ export default function() {
             text: '连接占比分布图',
             style: {
               fill: 'white',
+              fontSize: 18
             },
           },
         },

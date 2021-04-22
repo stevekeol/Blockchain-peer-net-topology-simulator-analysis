@@ -4,7 +4,7 @@ import { Line } from '@antv/g2plot';
 export default function() {
   let line: any = null;
 
-  function getData() {
+  function getInitData() {
     // generate an array of random data
     const data = [];
     const time = new Date().getTime();
@@ -21,7 +21,7 @@ export default function() {
   useEffect(() => {
     if(!line) {
       line = new Line('container', {
-        data: getData(),
+        data: getInitData(),
         padding: 'auto',
         xField: 'x',
         yField: 'y',
@@ -40,6 +40,13 @@ export default function() {
         xAxis: {
           type: 'time',
           mask: 'HH:MM:ss',
+          title: {
+            text: '网络性能实时趋势图',
+            style: {
+              fill: 'white',
+              fontSize: 18
+            },
+          },          
         },
         lineStyle: {
           stroke: 'purple',
@@ -50,7 +57,8 @@ export default function() {
         },        
         smooth: true,
         point: {
-          color: 'white'
+          color: 'white',
+          size: 0,
         },
       });
 
@@ -61,8 +69,11 @@ export default function() {
         const x = new Date().getTime(), // current time
           y = Math.random();
         const newData = line.options.data.slice(1).concat({ x, y });
-        line.changeData(newData);
-      }, 1000);
+        // line.changeData(newData);
+        line.update({
+          data: newData
+        })
+      }, 1200);
     }
   })
   return(
