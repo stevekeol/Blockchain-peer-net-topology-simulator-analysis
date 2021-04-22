@@ -57,4 +57,4 @@ graph.addItem('edge', newEdge);
 1. 查找节点连接数(入度，出度等): graph.getNodeDegree(node, degreeType, refresh)
 ```js
 graph.getNodeDegree('node1', 'in/out/total');
-```
+

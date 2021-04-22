@@ -6,7 +6,7 @@ import { PeerInfo, Operation } from './Components';
 import { nodeScaleAnimetion, showNearbyNodeAndEdge } from './Libs';
 
 import { data, dataMini, dataMedim } from './Datas';
-import G6_CONFIG from './Configs';
+import { G6_CONFIG } from './Configs';
 import './App.css';
 
 export default function() {

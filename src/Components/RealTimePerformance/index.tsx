@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Line } from '@antv/g2plot';
+import { realTimeLineConfig } from '../../Configs';
 
 export default function() {
   let line: any = null;
@@ -20,56 +21,14 @@ export default function() {
 
   useEffect(() => {
     if(!line) {
-      line = new Line('container', {
-        data: getInitData(),
-        padding: 'auto',
-        xField: 'x',
-        yField: 'y',
-        yAxis: {
-          grid: {
-            line: {
-              style: {
-                stroke: 'white',
-                lineWidth: 0.5,
-                lineDash: [4, 5],
-                strokeOpacity: 1,
-              }
-            }
-          }          
-        },        
-        xAxis: {
-          type: 'time',
-          mask: 'HH:MM:ss',
-          title: {
-            text: '网络性能实时趋势图',
-            style: {
-              fill: 'white',
-              fontSize: 18
-            },
-          },          
-        },
-        lineStyle: {
-          stroke: 'purple',
-          fillOpacity: 0.5,
-          lineWidth: 1,
-          strokeOpacity: 1.0,
-          shadowColor: 'black',
-        },        
-        smooth: true,
-        point: {
-          color: 'white',
-          size: 0,
-        },
-      });
-
+      let options = Object.assign({data: getInitData()}, realTimeLineConfig)
+      line = new Line('container', options as any)      
       line.render();
 
       /** 模拟实时计算出来的的性能评分 */
       setInterval(() => {
-        const x = new Date().getTime(), // current time
-          y = Math.random();
+        const x = new Date().getTime(), y = Math.random();
         const newData = line.options.data.slice(1).concat({ x, y });
-        // line.changeData(newData);
         line.update({
           data: newData
         })

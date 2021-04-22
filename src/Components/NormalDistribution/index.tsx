@@ -4,11 +4,10 @@ import { Button, Tooltip } from 'antd';
 import { SwapOutlined } from '@ant-design/icons';
 import 'antd/dist/antd.css';
 import { Area, Line } from '@antv/g2plot';
-import { normalDistributionData } from '../../Datas';
+import { normalDistributionLineConfig } from '../../Configs';
 
 export default function() {
   const ref = React.useRef(null);
-  // const container = ReactDOM.findDOMNode(ref.current);
   let line: any = null;
 
   const data = 
@@ -67,55 +66,13 @@ export default function() {
 
   useEffect(() => {
     if(!line) {
-      line = new Line('container', {
-        data,
-        padding: 'auto',
-        autoFit: true,
-        xField: 'connectionRate',
-        yField: 'connectionCount',
-        yAxis: {
-          grid: {
-            line: {
-              style: {
-                stroke: 'white',
-                lineWidth: 0.5,
-                lineDash: [4, 5],
-                strokeOpacity: 1,
-              }
-            }
-          }          
-        },        
-        xAxis: {
-          title: {
-            text: '连接占比分布图',
-            style: {
-              fill: 'white',
-              fontSize: 18
-            },
-          },
-        },
-        tooltip: {
-          fields: ['connectionCount', 'nodes'],
-        },
-        lineStyle: {
-          stroke: 'yellow',
-          fillOpacity: 0.5,
-          lineWidth: 1,
-          strokeOpacity: 1.0,
-          shadowColor: 'black',
-        },
-        smooth: true,
-      });
+      let options = Object.assign({data}, normalDistributionLineConfig);
+      line = new Line('container', options as any);
       line.render();
     }
   })
 
-  // const [isRealTimeMode, toggleMode] = useState(false);
   return(
-    <>
-    {
-      // <div className="canvas" ref={ref}></div>
-    }
-    </>
+    <></>
   )
 }
