@@ -8,6 +8,7 @@ import ReplayMode from './ReplayMode';
 import './index.css';
 
 export default function() {
+  // 其实此处可以使用useBoolean, 更简洁
   const [isRealTimeMode, toggleMode] = useState(true);
   return(
     <>
