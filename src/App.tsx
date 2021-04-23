@@ -29,69 +29,69 @@ export default function() {
         G6_CONFIG)
       );
 
-      // 新增节点-demo
-      setTimeout(() => {
-        const newNode = {
-          id: '5',
-          label: 'node-5',
-          x: 200,
-          y: 200
-        };
-        graph.addItem('node', newNode);
-      }, 3000)
 
-      // 新增连接-demo
-      setTimeout(() => {
-        const newEdge = {
-          source: '2',
-          target: '5'
-        }
-        graph.addItem('edge', newEdge);
-      }, 5000)
+      setInterval(() => {
+        // 新增节点-demo
+        setTimeout(() => {
+          const newNode = {
+            id: '5',
+            label: 'node-5',
+            x: 200,
+            y: 200
+          };
+          graph.addItem('node', newNode);
+        }, 1000)
 
-
-      //删除节点-demo
-      setTimeout(() => {
-        const newNode = {
-          id: '5',
-          label: 'node-5',
-          x: 200,
-          y: 200
-        };
-
-        graph.removeItem(graph.findById('5'));
-      }, 7000)
+        // 新增连接-demo
+        setTimeout(() => {
+          const newEdge = {
+            source: '2',
+            target: '5'
+          }
+          graph.addItem('edge', newEdge);
+        }, 3000)
 
 
-      //节点样式更改(取决于节点负载)-demo
-      setTimeout(() => {
-        const model = {
-          id: '0',
-          label: 'node-0',
-          style: {
-            fill: 'orange',
-          },
-        };
+        //删除节点-demo
+        setTimeout(() => {
+          const newNode = {
+            id: '5',
+            label: 'node-5',
+            x: 200,
+            y: 200
+          };
 
-        const item = graph.findById('0');
-        graph.updateItem(item, model);     
+          graph.removeItem(graph.findById('5'));
+        }, 5000)
+
+
+        //节点样式更改(取决于节点负载)-demo
+        setTimeout(() => {
+          const model = {
+            id: '0',
+            label: 'node-0',
+            style: {
+              fill: 'orange',
+            },
+          };
+
+          const item = graph.findById('0');
+          graph.updateItem(item, model);     
+        }, 7000)
+
       }, 9000)
-
-      // setTimeout(() => {
-      //   graph.changeData(dataMini)
-      // }, 3000)
-
 
       // showSelectedNodeInfo(graph);
       showNearbyNodeAndEdge(graph);
 
       graph.data(dataMedim);
       graph.render();
-
-      // console.log(graph.save());
-      // console.log(graph.getNodeDegree('0', 'out'));
     }
   })
+
+  /**
+   * @Test useContext在跨组件传值时的使用
+   */
 
   return(
     <div className="app">
@@ -104,6 +104,6 @@ export default function() {
           <Operation />
         </div>
       </div>
-    </div>    
+    </div>
   )
 }
