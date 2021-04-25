@@ -21,7 +21,7 @@
   "repository": {
     "url": "https://github.com/stevekeol/Blockchain-peer-net-topology-simulator-analysis"
   },
-  "productName": "let me think more",
+  "productName": "let me think more..",
   "scripts": {
     "dev": "concurrently \"SET BROWSER=none && yarn dev:vite\" \" yarn dev:electron",
     "dev:vite": "vite",
@@ -38,13 +38,14 @@
     "@ant-design/icons": "^4.6.2",
     "@antv/g2plot": "^2.3.18",
     "@antv/g6": "^4.2.5",
+    "@types/uuid": "^8.3.0",
     "antd": "^4.15.1",
     "electron-is-dev": "^1.2.0",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
     "react-use": "^17.2.3",
     "socket.io-client": "^4.0.1",
-    "uuid4": "^2.0.2"
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@types/node": "^14.14.22",

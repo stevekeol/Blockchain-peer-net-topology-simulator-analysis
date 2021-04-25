@@ -3,10 +3,11 @@ import G6 from '@antv/g6';
 /**
  * 获取节点字段的方式: ${e.item.getModel().label || e.item.getModel().id}
  */
+console.log('==1=123==')
 const nodeToolTips = new G6.Tooltip({
   offsetX: 10,
   offsetY: 20,
-  getContent(e) {
+  getContent(e: any) {
     const outDiv = document.createElement('div');
     outDiv.style.width = '200px';
     outDiv.innerHTML = `
