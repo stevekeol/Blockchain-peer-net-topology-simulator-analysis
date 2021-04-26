@@ -80,7 +80,7 @@ export function nodeInfoLog(graph: any) {
   const nodes = graph.getNodes();
   const edge = chooseEdge(nodes);
   const MAX_CONNECTIONS = 10; // 暂时约定最大连接数为10
-  const capacity = Math.floor(Math.random() * nodes.length);
+  const capacity = Math.floor(Math.random() * 10);
   return {
     timestamp: Date.now(),
     event: LogType.DISCONNECTED,

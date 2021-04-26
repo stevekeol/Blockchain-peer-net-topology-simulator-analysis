@@ -1,21 +1,26 @@
 import { edgeToolTips, nodeToolTips } from '../Libs';
+type Layout = 'random' 
+| 'force' 
+| 'circular' | 'radial' | 'MDS' | 'fruchterman' | 'dagre' | 'concentric';
 
 const g6_config =  {
   width: 1200,
   height: 1000,
   fitView: true,
+  // autoPaint: true,
   modes: {
     // default: ['drag-canvas', 'drag-node', 'click-select', 'zoom-canvas'],
     default: ['drag-node', 'click-select'],
     // default: ['drag-node'],
   },
   layout: {
-    type: 'fruchterman',
+    type: 'fruchterman', //可切换布局方式
     gravity: 4,
     speed: 5,
+    // clustering: true,
     workerEnabled: true, //使用worker线程分担渲染线程的压力
   },
-  animate: true,
+  // animate: true,
   defaultNode: {
     size: 60,
     style: {

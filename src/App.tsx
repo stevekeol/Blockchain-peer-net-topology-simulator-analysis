@@ -31,34 +31,69 @@ export default function() {
         G6_CONFIG)
       );
 
+      const tast = {
+        addEdge: addEdge,
+        removeEdge: removeEdge,
+        updateNode: updateNode
+      }
+
+      /** 
+       * 模拟:建立连接
+       * 只有成功连接的edge，才显示在拓扑图中; 尝试连接的时长(评价指标?)，可以在内存中缓存计算
+       */
+      function addEdge() {
+        const edge = connectedLog(graph);
+        const { source, target } = edge.data;
+        if(!graph.findById(source)) {
+          updateGraph(graph, 'addNode', genNodeLog(source));
+        }
+        updateGraph(graph, 'addEdge', edge);        
+      }
+
+      /** 模拟:断开连接 */
+      function removeEdge() {
+        updateGraph(graph, 'removeEdge', disconnectedLog(graph));
+      }
+
+      /** 模拟:节点更新 */
+      function updateNode() {
+        updateGraph(graph, 'updateNode', nodeInfoLog(graph));
+      }
+
       setInterval(() => {
-        /**
-         * @TODO 
-         * 1. 创建节点的逻辑，其实是在connectionLog中体现，假如source/target是一个不存在的节点，就创建它
-         * 2. 只有成功连接的edge，才显示在拓扑图中; 尝试连接的时长(评价指标?)，可以在内存中缓存计算
-         */
-
-        // 模拟:建立连接
-        setTimeout(() => {
-          const edge = connectedLog(graph);
-          const { source, target } = edge.data;
-          if(!graph.findById(source)) {
-            updateGraph(graph, 'addNode', genNodeLog(source));
-          }
-          updateGraph(graph, 'addEdge', edge);
-        }, 2000)
-        
-        // 模拟:断开连接
-        setTimeout(() => {
-          updateGraph(graph, 'removeEdge', disconnectedLog(graph));
-        }, 3000)
-
-        // 模拟:节点更新
-        setTimeout(() => {
-          updateGraph(graph, 'updateNode', nodeInfoLog(graph));
-        }, 4000)
-
+        let random = Math.random();
+        if(random >= 0 && random < 0.333) {
+          addEdge();
+        } else if(random >= 0.333 && random < 0.666) {
+          removeEdge();
+        } else if(random >= 0.666 && random <= 1) {
+          updateNode();
+        }
       }, 2000)
+
+      // setInterval(() => {
+
+      //   // 模拟:建立连接
+      //   setTimeout(() => {
+      //     // const edge = connectedLog(graph);
+      //     // const { source, target } = edge.data;
+      //     // if(!graph.findById(source)) {
+      //     //   updateGraph(graph, 'addNode', genNodeLog(source));
+      //     // }
+      //     // updateGraph(graph, 'addEdge', edge);
+      //   }, 2000)
+        
+      //   // 模拟:断开连接
+      //   setTimeout(() => {
+      //     // updateGraph(graph, 'removeEdge', disconnectedLog(graph));
+      //   }, 3000)
+
+      //   // 模拟:节点更新
+      //   setTimeout(() => {
+      //     // updateGraph(graph, 'updateNode', nodeInfoLog(graph));
+      //   }, 4000)
+
+      // }, 2000)
 
       // showSelectedNodeInfo(graph);
       showNearbyNodeAndEdge(graph);
@@ -82,7 +117,9 @@ export default function() {
       // node.getEdges()/node.getInEdges()/node.getOutEdges()
       // node.addEdge(edge) / node.removeEdge(edge)
 
-
+      // 切换布局
+      // const layout = new G6.Layout['layoutName']
+      // layout.updateCfg(cfg)
     }
   })
 

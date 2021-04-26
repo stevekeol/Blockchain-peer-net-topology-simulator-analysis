@@ -22,7 +22,9 @@ export default function updateGraph(graph: any, commandType: CommandType, logIte
     case "addNode":
       const newNode = {
         id: data.mac,
-        label: `Node: ${data.mac.substring(0, 4)}`,
+        label: `Node-${data.mac.substring(0, 4)}`,
+        // x: 200,
+        // y: 200,
         payload: {
           id: data.mac,
           capacity: 0,
@@ -33,6 +35,8 @@ export default function updateGraph(graph: any, commandType: CommandType, logIte
       }
       console.info("%c【节点进入】: " + data.mac, 'color:white;background:blue');
       graph.addItem('node', newNode);
+      // graph.render();
+      // graph.fitView();
       break;
 
     /**
@@ -48,6 +52,7 @@ export default function updateGraph(graph: any, commandType: CommandType, logIte
       // console.info(`%c【连接存在】: ${data.source} ===> ${data.target}`, 'color:grey');
       console.info(`【连接创建】: ${data.source} ===> ${data.target}`);
       graph.addItem('edge', newEdge);
+      // graph.positionsAnimate()
       break;
 
     /**
