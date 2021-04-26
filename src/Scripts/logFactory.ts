@@ -4,7 +4,7 @@
  */
 
 import { v4 as uuid } from 'uuid';
-import genEdge from './getRandomSourceAndTarget';
+import chooseEdge from './getRandomSourceAndTarget';
 
 enum LogType {
   //创建节点事件（正式网络中无该事件）
@@ -32,21 +32,67 @@ enum LogType {
   ALL = 63
 }
 
-export function genNodeLog() {
+export function genNodeLog(source: any) {
   return {
     timestamp: Date.now(),
     event: LogType.GENNODE,
     data: {
-      mac: uuid()
+      mac: source || uuid() as any
     }
   }
 }
 
 export function connectedLog(graph: any) {
   const nodes = graph.getNodes();
+  const { source, target } = chooseEdge(nodes);
+  /**
+   * 0.1的概率是新节点发起的连接请求;
+   * 0.9的概率是已存在的节点发起的请求;
+   */
+  if(Math.random() < 0.10) {
+    return {
+      timestamp: Date.now(),
+      event: LogType.CONNECTED,
+      data: {
+        source: uuid(),
+        target
+      }
+    }
+  } else {
+    return {
+      timestamp: Date.now(),
+      event: LogType.CONNECTED,
+      data: { source, target }
+    }
+  }
+}
+
+export function disconnectedLog(graph: any) {
+  const nodes = graph.getNodes();
   return {
     timestamp: Date.now(),
-    event: LogType.CONNECTED,
-    data: genEdge(nodes)
+    event: LogType.DISCONNECTED,
+    data: chooseEdge(nodes)
+  }  
+}
+
+export function nodeInfoLog(graph: any) {
+  const nodes = graph.getNodes();
+  const edge = chooseEdge(nodes);
+  const MAX_CONNECTIONS = 10; // 暂时约定最大连接数为10
+  const capacity = Math.floor(Math.random() * nodes.length);
+  return {
+    timestamp: Date.now(),
+    event: LogType.DISCONNECTED,
+    data: {
+      mac: edge.source,
+      peerMac: edge.target,
+      peerInfo: {
+        capacity: capacity,
+        connectPercent: capacity / MAX_CONNECTIONS,
+        blockHeight: Math.floor(Math.random() * 100),
+        delay: Math.floor(Math.random() * 10)
+      }
+    }
   }
 }

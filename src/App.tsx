@@ -9,7 +9,7 @@ import { data, dataMini, dataMedim } from './Datas';
 import { G6_CONFIG } from './Configs';
 import './App.css';
 
-import { genNodeLog, connectedLog, } from './Scripts/logFactory';
+import { genNodeLog, connectedLog, disconnectedLog, nodeInfoLog } from './Scripts/logFactory';
 import updateGraph from './Scripts/updateGraph';
 
 export default function() {
@@ -32,60 +32,50 @@ export default function() {
       );
 
       setInterval(() => {
-        // 模拟:节点进入
-        setTimeout(() => {
-          /**
-           * @TODO 
-           * 1. 创建节点的逻辑，其实是在connectionLog中体现，假如source/target是一个不存在的节点，就创建它
-           * 2. 只有成功连接的edge，才显示在拓扑图中; 尝试连接的时长(评价指标?)，可以在内存中缓存计算
-           */
-          console.log(graph.findById('0').getEdges());
-          updateGraph(graph, 'addNode', genNodeLog());
-        }, 1000)
+        /**
+         * @TODO 
+         * 1. 创建节点的逻辑，其实是在connectionLog中体现，假如source/target是一个不存在的节点，就创建它
+         * 2. 只有成功连接的edge，才显示在拓扑图中; 尝试连接的时长(评价指标?)，可以在内存中缓存计算
+         */
 
         // 模拟:建立连接
         setTimeout(() => {
-          updateGraph(graph, 'addEdge', connectedLog(graph));
+          const edge = connectedLog(graph);
+          const { source, target } = edge.data;
+          if(!graph.findById(source)) {
+            updateGraph(graph, 'addNode', genNodeLog(source));
+          }
+          updateGraph(graph, 'addEdge', edge);
+        }, 2000)
+        
+        // 模拟:断开连接
+        setTimeout(() => {
+          updateGraph(graph, 'removeEdge', disconnectedLog(graph));
         }, 3000)
 
-
-        //模拟:节点退出
+        // 模拟:节点更新
         setTimeout(() => {
-          const newNode = {
-            id: '5',
-            label: 'node-5',
-            x: 200,
-            y: 200
-          };
+          updateGraph(graph, 'updateNode', nodeInfoLog(graph));
+        }, 4000)
 
-          graph.removeItem(graph.findById('5'));
-        }, 5000)
-
-        //模拟:断开连接
-
-
-
-        //节点样式更改(取决于节点负载)-demo
-        setTimeout(() => {
-          const model = {
-            id: '0',
-            style: {
-              fill: 'orange',
-            },
-          };
-
-          const item = graph.findById('0');
-          // 增量渲染,只需要传入需要更新的字段
-          graph.updateItem(item, model);
-        }, 7000)
-
-      }, 9000)
+      }, 2000)
 
       // showSelectedNodeInfo(graph);
       showNearbyNodeAndEdge(graph);
 
       graph.data(dataMedim);
       graph.render();
+
+      // // 虽然成功运行，但图形上貌似没移除连接边
+      // setTimeout(() => {
+      //   console.log('===')
+      //   const node = graph.findById('0');
+      //   const id = node._cfg.edges[0]._cfg.model.id;
+      //   const edge = graph.findById(id);
+      //   console.log(node)
+      //   console.log(edge)
+      //   node.removeEdge(edge);
+      // }, 1000)
 
       // graph.findById('0').getModel().payload;
       // node.getNeighbors(type)
