@@ -23,8 +23,8 @@ export default function updateGraph(graph: any, commandType: CommandType, logIte
       const newNode = {
         id: data.mac,
         label: `Node-${data.mac.substring(0, 4)}`,
-        // x: 200,
-        // y: 200,
+        x: 200,
+        y: 200,
         payload: {
           id: data.mac,
           capacity: 0,

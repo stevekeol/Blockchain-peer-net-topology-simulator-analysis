@@ -47,7 +47,7 @@ export default function() {
         if(!graph.findById(source)) {
           updateGraph(graph, 'addNode', genNodeLog(source));
         }
-        updateGraph(graph, 'addEdge', edge);        
+        updateGraph(graph, 'addEdge', edge);
       }
 
       /** 模拟:断开连接 */
